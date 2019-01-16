@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">FragmentsLab</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+    <string name="first_redbutton">Red Fragment</string>
+    <string name="first_greenbutton">Green Fragment</string>
+    <string name="first_bluebutton">Blue Fragment</string>
+    <string name="first_UWpurple">UW Purple Fragment</string>
+    <string name="first_UWgold">UW Gold Fragment</string>
+    <string name="color_label">Color</string>
+    <string name="all_color_key">key</string>
+
+</resources>
