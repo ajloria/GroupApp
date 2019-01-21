@@ -21,6 +21,7 @@ public class ColorFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     public ColorFragment() {
+        //ADDED COMMENT!!!
         // Required empty public constructor
     }
 
