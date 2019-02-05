@@ -8,12 +8,32 @@
         android:icon="@drawable/ic_home"
         android:title="Home" />
     <item
-        android:id="@+id/nav_blog_post"
-        android:icon="@drawable/ic_mms"
-        android:title="Blog Post For Recycler View Example" />
+        android:id="@+id/nav_weather"
+        android:icon="@drawable/ic_wb_sunny_black"
+        android:title="Weather" />
+    <item android:title="Communication">
+        <menu>
 
-    <item
-        android:id="@+id/nav_set_list"
-        android:icon="@drawable/ic_list_black"
-        android:title="Eventually Update to Something" />
+            <item
+                android:id="@+id/nav_my_chats"
+                android:icon="@drawable/ic_chat_black"
+                android:title="My Chats" />
+
+            <item
+                android:id="@+id/nav_connections"
+                android:icon="@drawable/ic_group_black"
+                android:title="Connections" />
+
+            <item
+                android:id="@+id/nav_search_connections"
+                android:icon="@drawable/ic_search_black"
+                android:title="Search Connections" />
+
+            <item
+                android:id="@+id/nav_blog_post"
+                android:icon="@drawable/ic_mms"
+                android:title="Recycler View Example" />
+
+        </menu>
+    </item>
 </menu>

@@ -10,21 +10,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import tcss450.uw.edu.phishapp.blog.BlogPost;
+import tcss450.uw.edu.phishapp.blog.ChatMessage;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link BlogPostFragment.OnFragmentInteractionListener} interface
+ * {@link ChatMessageFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class BlogPostFragment extends Fragment {
+public class ChatMessageFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-    private BlogPost myBlogPost;
+    private ChatMessage myBlogPost;
 
-    public BlogPostFragment() {
+    public ChatMessageFragment() {
         // Required empty public constructor
     }
 
@@ -33,25 +33,25 @@ public class BlogPostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_blog_post, container, false);
+        View v = inflater.inflate(R.layout.fragment_chat_message, container, false);
 
         savedInstanceState = getArguments();
 
         if (savedInstanceState != null) {
-            myBlogPost = (BlogPost) savedInstanceState.getSerializable("BlogPost");
+            myBlogPost = (ChatMessage) savedInstanceState.getSerializable("ChatMessage");
 
-            TextView title = v.findViewById(R.id.fragBlogPost_blogTitle_textView);
+            TextView title = v.findViewById(R.id.fragChatMessage_msgTitle_textView);
             title.setText(myBlogPost.getTitle());
 //            Log.wtf("WRONG", b.getAuthor());
 
-            TextView publishDate = v.findViewById(R.id.fragBlogPost_publishDate_textView);
-            publishDate.setText(myBlogPost.getPubDate());
+//            TextView publishDate = v.findViewById(R.id.fragBlogPost_publishDate_textView);
+//            publishDate.setText(myBlogPost.getPubDate());
 
             TextView fullTeaser = v.findViewById(R.id.fragBlogPost_smallTeaser_textView);
             fullTeaser.setText(Html.fromHtml(myBlogPost.getTeaser()));
 
-            Button b = (Button) v.findViewById(R.id.fragBlogPost_fullTeaser_textView);
-            b.setOnClickListener(this::viewFullPost);
+            Button b = (Button) v.findViewById(R.id.fragChatMessage_sendMessage_button);
+//            b.setOnClickListener(this::viewFullPost);
 
         }
 

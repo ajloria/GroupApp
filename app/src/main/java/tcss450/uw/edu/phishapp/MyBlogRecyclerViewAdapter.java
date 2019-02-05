@@ -7,21 +7,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import tcss450.uw.edu.phishapp.BlogFragment.OnListFragmentInteractionListener;
-import tcss450.uw.edu.phishapp.blog.BlogPost;
+import tcss450.uw.edu.phishapp.ChatFragment.OnListFragmentInteractionListener;
+import tcss450.uw.edu.phishapp.blog.ChatMessage;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link BlogPost} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link ChatMessage} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  */
 public class MyBlogRecyclerViewAdapter extends RecyclerView.Adapter<MyBlogRecyclerViewAdapter.ViewHolder> {
 
-    private final List<BlogPost> mValues;
+    private final List<ChatMessage> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyBlogRecyclerViewAdapter(List<BlogPost> blogs, OnListFragmentInteractionListener listener) {
+    public MyBlogRecyclerViewAdapter(List<ChatMessage> blogs, OnListFragmentInteractionListener listener) {
         mValues = blogs;
         mListener = listener;
     }
@@ -29,7 +29,7 @@ public class MyBlogRecyclerViewAdapter extends RecyclerView.Adapter<MyBlogRecycl
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_blog, parent, false);
+                .inflate(R.layout.fragment_chat, parent, false);
         return new ViewHolder(view);
     }
 
@@ -37,7 +37,7 @@ public class MyBlogRecyclerViewAdapter extends RecyclerView.Adapter<MyBlogRecycl
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).getTitle());
-        holder.mContentView.setText(mValues.get(position).getPubDate());
+//        holder.mContentView.setText(mValues.get(position).getPubDate());
         holder.mSamplingView.setText(Html.fromHtml(mValues.get(position).getTeaser()));
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +62,7 @@ public class MyBlogRecyclerViewAdapter extends RecyclerView.Adapter<MyBlogRecycl
         public final TextView mIdView;
         public final TextView mContentView;
         public final TextView mSamplingView;
-        public BlogPost mItem;
+        public ChatMessage mItem;
 
         public ViewHolder(View view) {
             super(view);

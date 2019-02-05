@@ -19,13 +19,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
-import tcss450.uw.edu.phishapp.blog.BlogPost;
+import tcss450.uw.edu.phishapp.blog.ChatMessage;
 import tcss450.uw.edu.phishapp.model.Credentials;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-                    BlogFragment.OnListFragmentInteractionListener,
-                    BlogPostFragment.OnFragmentInteractionListener,
+                    ChatFragment.OnListFragmentInteractionListener,
+                    ChatMessageFragment.OnFragmentInteractionListener,
                     WaitFragment.OnFragmentInteractionListener {
 
     private Credentials myCredentials;
@@ -102,24 +102,31 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             loadFragmentHelper(bundleFragment(new SuccessFragment(), "Success"));
            //load new frag.
-        } else if (id == R.id.nav_blog_post) {
-            Uri uri = new Uri.Builder()
-                    .scheme("https")
-                    .appendPath(getString(R.string.ep_base_url))
-                    .appendPath(getString(R.string.ep_phish))
-                    .appendPath(getString(R.string.ep_blog))
-                    .appendPath(getString(R.string.ep_get))
-                    .build();
-
-            new GetAsyncTask.Builder(uri.toString())
-                    .onPreExecute(this::onWaitFragmentInteractionShow)
-                    .onPostExecute(this::handleBlogGetOnPostExecute)
-                    .addHeaderField("authorization", mJwToken) //add the JWT as a header
-                    .build().execute();
-
-        } else if (id == R.id.nav_set_list) {
-//            loadFragment(new SetListFragment());
+        } else if (id == R.id.nav_weather) {
+            loadFragmentHelper(new WeatherFragment());
+        } else if (id == R.id.nav_my_chats) {
+            loadFragmentHelper(new ChatFragment());
+        } else if (id == R.id.nav_connections) {
+            loadFragmentHelper(new ConnectionsFragment());
+        } else if (id == R.id.nav_search_connections) {
+           loadFragmentHelper(new SearchConnectionFragment());
         }
+//        else if (id == R.id.nav_blog_post) {
+////            Uri uri = new Uri.Builder()
+////                    .scheme("https")
+////                    .appendPath(getString(R.string.ep_base_url))
+////                    .appendPath(getString(R.string.ep_phish))
+////                    .appendPath(getString(R.string.ep_blog))
+////                    .appendPath(getString(R.string.ep_get))
+////                    .build();
+////
+////            new GetAsyncTask.Builder(uri.toString())
+////                    .onPreExecute(this::onWaitFragmentInteractionShow)
+////                    .onPostExecute(this::handleBlogGetOnPostExecute)
+////                    .addHeaderField("authorization", mJwToken) //add the JWT as a header
+////                    .build().execute();
+//
+//        }
         //This will close layout after selecting a item.
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -187,12 +194,12 @@ public class HomeActivity extends AppCompatActivity
                     JSONArray data = response.getJSONArray(
                             getString(R.string.keys_json_blogs_data));
 
-                    List<BlogPost> blogs = new ArrayList<>();
+                    List<ChatMessage> blogs = new ArrayList<>();
 
                     for(int i = 0; i < data.length(); i++) {
                         JSONObject jsonBlog = data.getJSONObject(i);
 
-                        blogs.add(new BlogPost.Builder(
+                        blogs.add(new ChatMessage.Builder(
                                 jsonBlog.getString(
                                         getString(R.string.keys_json_blogs_pubdate)),
                                 jsonBlog.getString(
@@ -204,12 +211,12 @@ public class HomeActivity extends AppCompatActivity
                                 .build());
                     }
 
-                    BlogPost[] blogAsArray = new BlogPost[blogs.size()];
+                    ChatMessage[] blogAsArray = new ChatMessage[blogs.size()];
                     blogAsArray = blogs.toArray(blogAsArray);
 
                     Bundle args = new Bundle();
-                    args.putSerializable(BlogFragment.ARG_BLOG_LIST, blogAsArray);
-                    Fragment frag = new BlogFragment();
+                    args.putSerializable(ChatFragment.ARG_BLOG_LIST, blogAsArray);
+                    Fragment frag = new ChatFragment();
                     frag.setArguments(args);
 
                     onWaitFragmentInteractionHide();
@@ -235,10 +242,10 @@ public class HomeActivity extends AppCompatActivity
     }
 
     @Override
-    public void onListFragmentInteraction(BlogPost item) {
+    public void onListFragmentInteraction(ChatMessage item) {
         Bundle arg = new Bundle();
-        arg.putSerializable("BlogPost", item);
-        BlogPostFragment bp = new BlogPostFragment();
+        arg.putSerializable("ChatMessage", item);
+        ChatMessageFragment bp = new ChatMessageFragment();
         bp.setArguments(arg);
         loadFragmentHelper(bp);
 

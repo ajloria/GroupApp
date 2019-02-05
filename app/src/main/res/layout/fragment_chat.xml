@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        app:cardBackgroundColor="@color/colorAccent"
+        app:cardBackgroundColor="@color/cardViewBackGround"
         app:cardCornerRadius="5dp">
 
         <LinearLayout
@@ -26,13 +26,13 @@
                 android:layout_margin="@dimen/text_margin"
                 android:textAppearance="?attr/textAppearanceListItem" />
 
-            <TextView
-                android:id="@+id/fragBlog_publishDate_textView"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
-                android:textAppearance="?attr/textAppearanceListItem" />
+            <!--<TextView-->
+                <!--android:id="@+id/fragBlog_publishDate_textView"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/text_margin"-->
+                <!--android:textAppearance="?attr/textAppearanceListItem" />-->
 
             <TextView
                 android:id="@+id/fragBlog_sampling_textView"

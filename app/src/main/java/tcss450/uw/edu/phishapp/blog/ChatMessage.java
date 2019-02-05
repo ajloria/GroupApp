@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @author Charles Bryan
  * @version 14 September 2018
  */
-public class BlogPost implements Serializable {
+public class ChatMessage implements Serializable {
 
     private final String mPubDate;
     private final String mTitle;
@@ -46,7 +46,7 @@ public class BlogPost implements Serializable {
         /**
          * Add an optional url for the full blog post.
          * @param val an optional url for the full blog post
-         * @return the Builder of this BlogPost
+         * @return the Builder of this ChatMessage
          */
         public Builder addUrl(final String val) {
             mUrl = val;
@@ -56,7 +56,7 @@ public class BlogPost implements Serializable {
         /**
          * Add an optional teaser for the full blog post.
          * @param val an optional url teaser for the full blog post.
-         * @return the Builder of this BlogPost
+         * @return the Builder of this ChatMessage
          */
         public Builder addTeaser(final String val) {
             mTeaser = val;
@@ -66,20 +66,20 @@ public class BlogPost implements Serializable {
         /**
          * Add an optional author of the blog post.
          * @param val an optional author of the blog post.
-         * @return the Builder of this BlogPost
+         * @return the Builder of this ChatMessage
          */
         public Builder addAuthor(final String val) {
             mAuthor = val;
             return this;
         }
 
-        public BlogPost build() {
-            return new BlogPost(this);
+        public ChatMessage build() {
+            return new ChatMessage(this);
         }
 
     }
 
-    private BlogPost(final Builder builder) {
+    private ChatMessage(final Builder builder) {
         this.mPubDate = builder.mPubDate;
         this.mTitle = builder.mTitle;
         this.mUrl = builder.mUrl;

@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import tcss450.uw.edu.phishapp.blog.BlogGenerator;
-import tcss450.uw.edu.phishapp.blog.BlogPost;
+import tcss450.uw.edu.phishapp.blog.ChatGenerator;
+import tcss450.uw.edu.phishapp.blog.ChatMessage;
 
 /**
  * A fragment representing a list of Items.
@@ -23,10 +24,10 @@ import tcss450.uw.edu.phishapp.blog.BlogPost;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class BlogFragment extends Fragment {
+public class ChatFragment extends Fragment {
 
     public static final String ARG_BLOG_LIST = "blogs lists";
-    private List<BlogPost> mBlog;
+    private List<ChatMessage> mBlog;
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
@@ -35,12 +36,12 @@ public class BlogFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public BlogFragment() {
+    public ChatFragment() {
     }
 
     @SuppressWarnings("unused")
-    public static BlogFragment newInstance(int columnCount) {
-        BlogFragment fragment = new BlogFragment();
+    public static ChatFragment newInstance(int columnCount) {
+        ChatFragment fragment = new ChatFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -52,10 +53,10 @@ public class BlogFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
-            mBlog = new ArrayList<BlogPost>(
-                    Arrays.asList((BlogPost[]) getArguments().getSerializable(ARG_BLOG_LIST)));
+            mBlog = new ArrayList<ChatMessage>(
+                    Arrays.asList((ChatMessage[]) getArguments().getSerializable(ARG_BLOG_LIST)));
         } else {
-            mBlog = BlogGenerator.BLOGS;
+            mBlog = ChatGenerator.BLOGS;
         }
     }
 
@@ -63,7 +64,7 @@ public class BlogFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_blog_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_chat_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -75,7 +76,7 @@ public class BlogFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             recyclerView.setAdapter(new MyBlogRecyclerViewAdapter(mBlog, mListener));
-//            recyclerView.setAdapter(new MyBlogRecyclerViewAdapter(BlogGenerator.POSTS, mListener));
+//            recyclerView.setAdapter(new MyBlogRecyclerViewAdapter(ChatGenerator.POSTS, mListener));
         }
         return view;
     }
@@ -108,6 +109,6 @@ public class BlogFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(BlogPost item);
+        void onListFragmentInteraction(ChatMessage item);
     }
 }
