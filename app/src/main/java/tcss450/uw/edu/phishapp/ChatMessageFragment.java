@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import tcss450.uw.edu.phishapp.blog.ChatMessage;
+import tcss450.uw.edu.phishapp.chat.ChatMessage;
 
 
 /**

@@ -29,11 +29,6 @@
                 android:icon="@drawable/ic_search_black"
                 android:title="Search Connections" />
 
-            <item
-                android:id="@+id/nav_blog_post"
-                android:icon="@drawable/ic_mms"
-                android:title="Recycler View Example" />
-
         </menu>
     </item>
 </menu>

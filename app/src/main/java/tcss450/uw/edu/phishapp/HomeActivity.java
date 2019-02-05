@@ -19,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
-import tcss450.uw.edu.phishapp.blog.ChatMessage;
+import tcss450.uw.edu.phishapp.chat.ChatMessage;
 import tcss450.uw.edu.phishapp.model.Credentials;
 
 public class HomeActivity extends AppCompatActivity

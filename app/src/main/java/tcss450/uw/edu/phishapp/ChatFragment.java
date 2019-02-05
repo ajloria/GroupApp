@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import tcss450.uw.edu.phishapp.blog.ChatGenerator;
-import tcss450.uw.edu.phishapp.blog.ChatMessage;
+import tcss450.uw.edu.phishapp.chat.ChatGenerator;
+import tcss450.uw.edu.phishapp.chat.ChatMessage;
 
 /**
  * A fragment representing a list of Items.
@@ -75,8 +74,8 @@ public class ChatFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyBlogRecyclerViewAdapter(mBlog, mListener));
-//            recyclerView.setAdapter(new MyBlogRecyclerViewAdapter(ChatGenerator.POSTS, mListener));
+            recyclerView.setAdapter(new MyChatRecyclerViewAdapter(mBlog, mListener));
+//            recyclerView.setAdapter(new MyChatRecyclerViewAdapter(ChatGenerator.POSTS, mListener));
         }
         return view;
     }

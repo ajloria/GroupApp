@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import tcss450.uw.edu.phishapp.ChatFragment.OnListFragmentInteractionListener;
-import tcss450.uw.edu.phishapp.blog.ChatMessage;
+import tcss450.uw.edu.phishapp.chat.ChatMessage;
 
 import java.util.List;
 
@@ -16,12 +16,12 @@ import java.util.List;
  * {@link RecyclerView.Adapter} that can display a {@link ChatMessage} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  */
-public class MyBlogRecyclerViewAdapter extends RecyclerView.Adapter<MyBlogRecyclerViewAdapter.ViewHolder> {
+public class MyChatRecyclerViewAdapter extends RecyclerView.Adapter<MyChatRecyclerViewAdapter.ViewHolder> {
 
     private final List<ChatMessage> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyBlogRecyclerViewAdapter(List<ChatMessage> blogs, OnListFragmentInteractionListener listener) {
+    public MyChatRecyclerViewAdapter(List<ChatMessage> blogs, OnListFragmentInteractionListener listener) {
         mValues = blogs;
         mListener = listener;
     }
