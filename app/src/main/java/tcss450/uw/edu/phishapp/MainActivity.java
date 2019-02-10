@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onRegisterClick() {
         Bundle args = new Bundle();
+        // added here just to test of the regSuccessInfoFragment works
+        // RegSuccessInfoFragment regSuccessInfoFragment = new RegSuccessInfoFragment();
+
         FragmentTransaction transaction = getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_main_container, new RegisterFragment())
@@ -68,14 +71,21 @@ public class MainActivity extends AppCompatActivity implements
             getSupportFragmentManager().popBackStack();
         }
 
-        args.putSerializable("Login", theUser);
+        // I have commented out the old onRegisterSuccess transaction
+        // Instead of going straight to login, now must go to the verfication info page
+        /* args.putSerializable("Login", theUser);
+
         LoginFragment loginFragment = new LoginFragment();
         loginFragment.setArguments(args);
         Log.wtf("Test", "In on register success" + theUser.getEmail());
         FragmentTransaction transaction = getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_main_container, loginFragment);
+                .replace(R.id.frame_main_container, loginFragment);*/
         // Commit the transaction
+        RegSuccessInfoFragment regSuccessInfoFragment = new RegSuccessInfoFragment();
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_main_container, regSuccessInfoFragment);
         transaction.commit();
     }
 
